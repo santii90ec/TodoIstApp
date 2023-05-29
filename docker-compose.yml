@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  localstack:
+    container_name: "localstack-standard-architecture"
+    image: localstack/localstack
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # external services port range
+    environment:
+      - DEBUG=0
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "./localstack-volume:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+  terraform_local:
+    container_name: terraform_local_standard_architecture
+    depends_on:
+      - localstack
+    build:
+      context: ./infrastructure
+      dockerfile: dev.Dockerfile
+    healthcheck:
+      test: [ "CMD", "[", "-f", "/tmp/done", "]" ]
+      interval: 5s
+      timeout: 1s
+      retries: 12
+      start_period: 20s
+
