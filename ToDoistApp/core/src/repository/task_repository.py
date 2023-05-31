@@ -13,3 +13,11 @@ class TaskRepository(ABC):
     @abstractmethod
     def create(self, task: Task) -> Optional[Task]:
         raise NotImplementedError
+
+    @abstractmethod
+    def edit(self, task: Task) -> Optional[Task]:
+        raise NotImplementedError
+
+
+    
+

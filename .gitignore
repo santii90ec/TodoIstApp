@@ -1,3 +1,4 @@
 .venv/
 .idea/
 localstack-volume/
+__pycache__/

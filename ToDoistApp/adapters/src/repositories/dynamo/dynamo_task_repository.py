@@ -1,6 +1,6 @@
 from typing import Optional
 
-from ToDoistApp.adapters.src.repositories.dynamo.operations import put_item, get_item
+from ToDoistApp.adapters.src.repositories.dynamo.operations import put_item, get_item, update_item
 from ToDoistApp.core.src.models.task import Task
 from ToDoistApp.core.src.repository.task_repository import TaskRepository
 
@@ -33,3 +33,21 @@ class DynamoTaskRepository(TaskRepository):
             condition_expression='attribute_not_exists(PK)',
         )
         return self.find_by_id(task_id)
+
+    def edit(self, task: Task) -> Optional[Task]:
+        taskDict = {
+            'ID': task.task_id,
+        }
+        updateexpression:str = 'SET description = val1'
+
+        update_item(
+            self.table,
+            taskDict,
+            updateexpression,
+            {
+                'val1': task.description
+            },
+            {'#attr1': 'description'}
+
+        )
+        return self.find_by_id(task.task_id)
