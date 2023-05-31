@@ -8,5 +8,11 @@ class AddTask:
 
     def execute(self, task_id: str, description: str) -> str:
         task = Task(task_id=task_id, description=description)
-        response: Task = self.task_repository.create(task)
+
+        repository_task = self.task_repository.find_by_id(task_id)
+
+        if repository_task:
+            raise Exception('There is a Task with the same id')
+
+        response = self.task_repository.create(task)
         return response.task_id
