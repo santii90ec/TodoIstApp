@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from ToDoistApp.core.src.models.task import Task
 from ToDoistApp.core.src.repository.task_repository import TaskRepository
@@ -11,9 +11,9 @@ class MemoryTaskRepository(TaskRepository):
     def __init__(self):
         self.tasks = []
 
-    def find_by_id(self, task_id: str):
+    def find_by_id(self, task_id: str) -> Optional[Task]:
         return next((task for task in self.tasks if task.task_id == task_id), None)
 
-    def create(self, task: Task):
+    def create(self, task: Task) -> Optional[Task]:
         self.tasks.append(task)
         return task

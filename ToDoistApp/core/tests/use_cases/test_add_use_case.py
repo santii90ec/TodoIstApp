@@ -9,4 +9,4 @@ def test_add_use_case():
     task_id = 'TASK_ID'
     description = 'Test task description'
     response = add_task_use_case.execute(task_id, description)
-    assert response.description == description
+    assert response == task_id
