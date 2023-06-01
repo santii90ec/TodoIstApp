@@ -1,7 +1,7 @@
 from typing import List, Optional
 
-from ToDoistApp.core.src.models.task import Task
-from ToDoistApp.core.src.repository.task_repository import TaskRepository
+from app.core.src.models.task import Task
+from app.core.src.repository.task_repository import TaskRepository
 
 
 class MemoryTaskRepository(TaskRepository):
@@ -23,3 +23,9 @@ class MemoryTaskRepository(TaskRepository):
     def edit(self, task: Task) -> Optional[Task]:
         self.updatedTasks.append(task)
         return task
+
+    def list_all(self) -> Optional[Task]:
+        pass
+
+    def delete(self, task: Task) -> Optional[Task]:
+        pass

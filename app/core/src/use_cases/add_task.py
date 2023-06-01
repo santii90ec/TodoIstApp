@@ -1,5 +1,5 @@
-from ToDoistApp.core.src.models.task import Task
-from ToDoistApp.core.src.repository.task_repository import TaskRepository
+from app.core.src.models.task import Task
+from app.core.src.repository.task_repository import TaskRepository
 
 
 class AddTask:

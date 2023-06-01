@@ -1,8 +1,8 @@
 from typing import Optional
 
-from ToDoistApp.adapters.src.repositories.dynamo.operations import put_item, get_item, update_item
-from ToDoistApp.core.src.models.task import Task
-from ToDoistApp.core.src.repository.task_repository import TaskRepository
+from app.adapters.src.repositories.dynamo.operations import put_item, get_item, update_item
+from app.core.src.models.task import Task
+from app.core.src.repository.task_repository import TaskRepository
 
 
 class DynamoTaskRepository(TaskRepository):

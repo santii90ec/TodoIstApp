@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from ToDoistApp.core.src.repository.task_repository import TaskRepository
+from app.core.src.repository.task_repository import TaskRepository
 
 
 class TaskRepositoryFactory(ABC):

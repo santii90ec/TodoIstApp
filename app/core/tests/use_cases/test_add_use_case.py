@@ -1,6 +1,6 @@
-from ToDoistApp.adapters.src.repositories.memory.memory_task_repository import MemoryTaskRepository
-from ToDoistApp.core.src.repository.task_repository import TaskRepository
-from ToDoistApp.core.src.use_cases.add_task import AddTask
+from app.adapters.src.repositories.memory.memory_task_repository import MemoryTaskRepository
+from app.core.src.repository.task_repository import TaskRepository
+from app.core.src.use_cases.add_task import AddTask
 
 
 def test_add_use_case():
